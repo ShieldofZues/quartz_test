@@ -16,8 +16,6 @@ buildNumber.properties
 ### Java template
 # Compiled class file
 *.class
-
-quartz-spring_demo.iml
 # Log file
 *.log
 *.iml
