@@ -26,17 +26,18 @@ function validateAdd() {
     }
     return true;
 }
+
 function add() {
     if (validateAdd()) {
         showWaitMsg();
         $.ajax({
-            type : "POST",
-            async : false,
-            dataType : "JSON",
-            cache : false,
-            url : "${basePath}task/add.htm",
-            data : $("#addForm").serialize(),
-            success : function(data) {
+            type: "POST",
+            async: false,
+            dataType: "JSON",
+            cache: false,
+            url: "${basePath}task/add.htm",
+            data: $("#addForm").serialize(),
+            success: function (data) {
                 hideWaitMsg();
                 if (data.flag) {
 
@@ -49,19 +50,21 @@ function add() {
         });//end-ajax
     }
 }
+
 function changeJobStatus(jobId, cmd) {
+
     showWaitMsg();
     $.ajax({
-        type : "POST",
-        async : false,
-        dataType : "JSON",
-        cache : false,
-        url : "${basePath}task/changeJobStatus.htm",
-        data : {
-            jobId : jobId,
-            cmd : cmd
+        type: "POST",
+        async: false,
+        dataType: "JSON",
+        cache: false,
+        url: "${basePath}task/changeJobStatus.htm",
+        data: {
+            jobId: jobId,
+            cmd: cmd
         },
-        success : function(data) {
+        success: function (data) {
             hideWaitMsg();
             if (data.flag) {
 
@@ -73,22 +76,23 @@ function changeJobStatus(jobId, cmd) {
         }//end-callback
     });//end-ajax
 }
+
 function updateCron(jobId) {
     var cron = prompt("输入cron表达式！", "")
     if (cron) {
         showWaitMsg();
 
         $.ajax({
-            type : "POST",
-            async : false,
-            dataType : "JSON",
-            cache : false,
-            url : "${basePath}task/updateCron.htm",
-            data : {
-                jobId : jobId,
-                cron : cron
+            type: "POST",
+            async: false,
+            dataType: "JSON",
+            cache: false,
+            url: "${basePath}task/updateCron.htm",
+            data: {
+                jobId: jobId,
+                cron: cron
             },
-            success : function(data) {
+            success: function (data) {
                 hideWaitMsg();
                 if (data.flag) {
 
@@ -102,6 +106,7 @@ function updateCron(jobId) {
     }
 
 }
+
 function showWaitMsg(msg) {
     if (msg) {
 
@@ -114,6 +119,7 @@ function showWaitMsg(msg) {
         panelContainer);
     msgDiv.css("marginLeft", -msgDiv.outerWidth() / 2);
 }
+
 function hideWaitMsg() {
     $('.datagrid-mask').remove();
     $('.datagrid-mask-msg').remove();

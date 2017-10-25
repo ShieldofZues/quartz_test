@@ -17,18 +17,3 @@
 <!--[if lt IE 9]-->
 <script src="<%=basePath%>/js/html5shiv.js"></script>
 <script src="<%=basePath%>/js/respond.min.js"></script>
-<html>
-<style>
-    .progress{
-        margin:auto;
-    }
-</style>
-<body>
-<div class="progress">
-    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 10%;min-width: 2em;">
-        <span class="sr-only">45% Complete</span>66%
-    </div>
-</div>
-</body>
-
-</html>

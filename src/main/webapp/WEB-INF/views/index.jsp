@@ -1,22 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@ page import="java.util.*" %>
+<%@ include file="common.jsp" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
-    <%
-        String path = request.getContextPath();
-        String rootPath = request.getScheme() + "://"
-                + request.getServerName() + ":" + request.getServerPort()
-                + "/";
-        String basePath = request.getScheme() + "://"
-                + request.getServerName() + ":" + request.getServerPort()
-                + path + "/";
-        request.setAttribute("basePath", basePath);
-        request.setAttribute("rootPath", rootPath);
-        pageContext.setAttribute("newLineChar", "\n");
-    %>
-    <script src="<%=basePath%>js/jquery-1.9.1.min.js"></script>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -24,41 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Data Exchange Platform</title>
-    <link href="<%=basePath%>/css//bootstrap.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="<%=basePath%>/js/html5shiv.js"></script>
-    <script src="<%=basePath%>/js/respond.min.js"></script>
-
     <![endif]-->
-    <style>
-
-        body {
-            padding-top: 50px;
-            padding-bottom: 40px;
-            color: #5a5a5a;
-        }
-
-        .carousel .item img {
-            width: 100%;
-        }
-
-        .pagination {
-            margin: auto;
-        }
-
-        .carousel-caption p {
-            margin-bottom: 20px;
-            font-size: 20px;
-            line-height: 1.8;
-        }
-
-        .container input {
-            width: 80px;
-        }
-        #pageid{
-            text-align: center;
-        }
-    </style>
+    <link href="<%=basePath%>/css/index.css" rel="stylesheet">
 
 </head>
 
@@ -211,134 +166,5 @@
 
 </div>
 </body>
-<script>
-
-    function validateAdd() {
-        if ($.trim($('#jobName').val()) == '') {
-            alert('name不能为空！');
-            $('#jobName').focus();
-            return false;
-        }
-        if ($.trim($('#jobGroup').val()) == '') {
-            alert('group不能为空！');
-            $('#jobGroup').focus();
-            return false;
-        }
-        if ($.trim($('#cronExpression').val()) == '') {
-            alert('cron表达式不能为空！');
-            $('#cronExpression').focus();
-            return false;
-        }
-        if ($.trim($('#beanClass').val()) == '' && $.trim($('#springId').val()) == '') {
-            $('#beanClass').focus();
-            alert('类路径和spring id至少填写一个');
-            return false;
-        }
-        if ($.trim($('#methodName').val()) == '') {
-            $('#methodName').focus();
-            alert('方法名不能为空！');
-            return false;
-        }
-        return true;
-    }
-
-    function add() {
-        if (validateAdd()) {
-            showWaitMsg();
-            $.ajax({
-                type: "POST",
-                async: false,
-                dataType: "JSON",
-                cache: false,
-                url: "${basePath}task/add.htm",
-                data: $("#addForm").serialize(),
-                success: function (data) {
-                    hideWaitMsg();
-                    if (data.flag) {
-
-                        location.reload();
-                    } else {
-                        alert(data.msg);
-                    }
-
-                }//end-callback
-            });//end-ajax
-        }
-    }
-
-    function changeJobStatus(jobId, cmd) {
-
-        showWaitMsg();
-        $.ajax({
-            type: "POST",
-            async: false,
-            dataType: "JSON",
-            cache: false,
-            url: "${basePath}task/changeJobStatus.htm",
-            data: {
-                jobId: jobId,
-                cmd: cmd
-            },
-            success: function (data) {
-                hideWaitMsg();
-                if (data.flag) {
-
-                    location.reload();
-                } else {
-                    alert(data.msg);
-                }
-
-            }//end-callback
-        });//end-ajax
-    }
-
-    function updateCron(jobId) {
-        var cron = prompt("输入cron表达式！", "")
-        if (cron) {
-            showWaitMsg();
-
-            $.ajax({
-                type: "POST",
-                async: false,
-                dataType: "JSON",
-                cache: false,
-                url: "${basePath}task/updateCron.htm",
-                data: {
-                    jobId: jobId,
-                    cron: cron
-                },
-                success: function (data) {
-                    hideWaitMsg();
-                    if (data.flag) {
-
-                        location.reload();
-                    } else {
-                        alert(data.msg);
-                    }
-
-                }//end-callback
-            });//end-ajax
-        }
-
-    }
-
-    function showWaitMsg(msg) {
-        if (msg) {
-
-        } else {
-            msg = '正在处理，请稍候...';
-        }
-        var panelContainer = $("body");
-        $("<div id='msg-background' class='datagrid-mask' style=\"display:block;z-index:10006;\"></div>").appendTo(panelContainer);
-        var msgDiv = $("<div id='msg-board' class='datagrid-mask-msg' style=\"display:block;z-index:10007;left:50%\"></div>").html(msg).appendTo(
-            panelContainer);
-        msgDiv.css("marginLeft", -msgDiv.outerWidth() / 2);
-    }
-
-    function hideWaitMsg() {
-        $('.datagrid-mask').remove();
-        $('.datagrid-mask-msg').remove();
-    }
-
-</script>
+<script src="<%=basePath%>/js/index.js"></script>
 </html>

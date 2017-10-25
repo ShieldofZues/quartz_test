@@ -1,0 +1,26 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 40px;
+    color: #5a5a5a;
+}
+
+.carousel .item img {
+    width: 100%;
+}
+
+.pagination {
+    margin: auto;
+}
+
+.carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.container input {
+    width: 80px;
+}
+#pageid{
+    text-align: center;
+}
