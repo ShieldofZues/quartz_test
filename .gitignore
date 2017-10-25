@@ -19,7 +19,7 @@ buildNumber.properties
 # Log file
 *.log
 *.iml
-*.gitignore
+.gitignore
 # BlueJ files
 *.ctxt
 
