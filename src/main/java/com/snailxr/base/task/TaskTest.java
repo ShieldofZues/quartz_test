@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 /**
 * @File    TaskTest.java
@@ -19,18 +21,18 @@ import org.springframework.stereotype.Component;
 */
 @Component
 public class TaskTest {
-	public final Logger log = Logger.getLogger(this.getClass());
+	private static  final Logger logger = LoggerFactory.getLogger(TaskTest.class);
  
 	public void run() {
 		for (int i = 0; i < 1; i++) {
-			log.debug(i+" run.........777777..............." + (new Date()));
+			logger.debug(i+" run.........777777..............." + (new Date()));
 		}
 
 	}
 
 	public void run1() {
 		for (int i = 0; i < 1; i++) {
-			log.debug(i+" run1......66666............" + (new Date()));
+			logger.debug(i+" run1......66666............" + (new Date()));
 		}
 	}
 	

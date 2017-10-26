@@ -1,12 +1,14 @@
 package com.snailxr.base.task;
 
-import org.apache.log4j.Logger;
+
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import com.snailxr.base.task.domain.ScheduleJob;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
 * @File    QuartzJobFactoryDisallowConcurrentExecution.java
@@ -20,7 +22,7 @@ import com.snailxr.base.task.domain.ScheduleJob;
 */
 @DisallowConcurrentExecution
 public class QuartzJobFactoryDisallowConcurrentExecution implements Job {
-	public final Logger log = Logger.getLogger(this.getClass());
+	private static  final Logger logger = LoggerFactory.getLogger(QuartzJobFactoryDisallowConcurrentExecution.class);
 
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {

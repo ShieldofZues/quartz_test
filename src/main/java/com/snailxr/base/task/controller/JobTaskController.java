@@ -1,23 +1,22 @@
 package com.snailxr.base.task.controller;
 
-import java.lang.reflect.Method;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.snailxr.base.support.RetObj;
+import com.snailxr.base.support.spring.SpringUtils;
+import com.snailxr.base.task.domain.ScheduleJob;
+import com.snailxr.base.task.service.JobTaskService;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.SchedulerException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.snailxr.base.support.RetObj;
-import com.snailxr.base.support.spring.SpringUtils;
-import com.snailxr.base.task.domain.ScheduleJob;
-import com.snailxr.base.task.service.JobTaskService;
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * @param
@@ -32,7 +31,7 @@ import com.snailxr.base.task.service.JobTaskService;
 @RequestMapping("/task")
 public class JobTaskController {
     // 日志记录器
-    public final Logger log = Logger.getLogger(this.getClass());
+    private static  final Logger logger = LoggerFactory.getLogger(JobTaskController.class);
     @Autowired
     private JobTaskService taskService;
 
@@ -109,7 +108,7 @@ public class JobTaskController {
         try {
             taskService.changeStatus(jobId, cmd);
         } catch (SchedulerException e) {
-            log.error(e.getMessage(), e);
+            logger.error(e.getMessage(), e);
             retObj.setMsg("任务状态改变失败！");
             return retObj;
         }

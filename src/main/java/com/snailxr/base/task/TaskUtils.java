@@ -4,10 +4,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
-
 import com.snailxr.base.support.spring.SpringUtils;
 import com.snailxr.base.task.domain.ScheduleJob;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
 * @File    TaskUtils.java
 * @author  ShieldofZues 
@@ -19,8 +20,7 @@ import com.snailxr.base.task.domain.ScheduleJob;
 *
 */
 public class TaskUtils {
-	public final static Logger log = Logger.getLogger(TaskUtils.class);
-
+	private static  final Logger logger = LoggerFactory.getLogger(TaskUtils.class);
 	/**
 	 * 通过反射调用scheduleJob中定义的方法
 	 * 
@@ -42,7 +42,7 @@ public class TaskUtils {
 
 		}
 		if (object == null) {
-			log.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，请检查是否配置正确！！！");
+			logger.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，请检查是否配置正确！！！");
 			return;
 		}
 		clazz = object.getClass();
@@ -50,7 +50,7 @@ public class TaskUtils {
 		try {
 			method = clazz.getDeclaredMethod(scheduleJob.getMethodName());
 		} catch (NoSuchMethodException e) {
-			log.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，方法名设置错误！！！");
+			logger.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，方法名设置错误！！！");
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

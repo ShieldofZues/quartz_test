@@ -7,7 +7,7 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.log4j.Logger;
+
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
@@ -20,10 +20,12 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
 import org.quartz.impl.matchers.GroupMatcher;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.snailxr.base.task.QuartzJobFactory;
 import com.snailxr.base.task.QuartzJobFactoryDisallowConcurrentExecution;
 import com.snailxr.base.task.dao.ScheduleJobMapper;
@@ -41,7 +43,7 @@ import com.snailxr.base.task.domain.ScheduleJob;
 */
 @Service
 public class JobTaskService {
-	public final Logger log = Logger.getLogger(this.getClass());
+	private static  final Logger logger = LoggerFactory.getLogger(JobTaskService.class);
 	@Autowired
 	private SchedulerFactoryBean schedulerFactoryBean;
 
@@ -122,7 +124,7 @@ public class JobTaskService {
 		}
 
 		Scheduler scheduler = schedulerFactoryBean.getScheduler();
-		log.debug(scheduler + ".......................................................................................add");
+		logger.debug(scheduler + ".......................................................................................add");
 		TriggerKey triggerKey = TriggerKey.triggerKey(job.getJobName(), job.getJobGroup());
 
 		CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
