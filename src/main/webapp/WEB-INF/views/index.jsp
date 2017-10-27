@@ -155,6 +155,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">no</button>
                 </div>
             </div>
         </div>
