@@ -17,7 +17,7 @@
 	request.setAttribute("rootPath", rootPath);
 	pageContext.setAttribute("newLineChar", "\n");
 %>
-<script src="<%=basePath%>scripts/jquery-1.9.1.min.js"></script>
+<script src="<%=basePath%>js/jquery-1.9.1.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>

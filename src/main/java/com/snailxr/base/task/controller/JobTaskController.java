@@ -35,7 +35,7 @@ public class JobTaskController {
     @Autowired
     private JobTaskService taskService;
 
-    @RequestMapping("taskList")
+    @RequestMapping("/taskList")
     public String taskList(HttpServletRequest request) {
         List<ScheduleJob> taskList = taskService.getAllTask();
         request.setAttribute("taskList", taskList);

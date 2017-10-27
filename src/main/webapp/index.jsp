@@ -20,7 +20,8 @@
 <html>
 <style>
     .progress {
-        margin: auto;
+        width: 50%;
+        height: 2%;
     }
 </style>
 <body>
@@ -35,21 +36,18 @@
     function setProcess() {
         var wd;
         wd = $(".active").css("width");
-        if(parseInt(wd.substring(0,wd.length-2))<100 && parseInt(wd.substring(0,wd.length-2))<200 ){
-            $(".active").css("width",parseInt((wd.substring(0,wd.length-2)))+10);
-        }else{
-            $(".active").css("width",parseInt((wd.substring(0,wd.length-2)))+1000);
-        }
-        
+        $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 1);
         $(".active").innerHTML = wd;
-        if(parseInt(wd.substring(0,(wd.length-2))) == parseInt(window.screen.width)){
+        if (parseInt(wd.substring(0, (wd.length - 2))) == 18) {
             window.clearInterval(bartimer);
+            $(".active").innerHTML = wd;
+            window.location.href = "<%=basePath%>/task/login.htm?rand=" + Math.random();
         }
     }
 
     var bartimer = window.setInterval(function () {
         setProcess();
-    }, 10);
+    }, 1);
     window.onload = function () {
         bartimer;
     }
