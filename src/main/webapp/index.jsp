@@ -40,10 +40,12 @@
     function setProcess() {
         var wd;
         wd = $(".active").css("width");
-        if (parseInt(wd.substring(0, (wd.length - 2))) > 125 && parseInt(wd.substring(0, (wd.length - 2))) < 140) {
-            $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 1);
-        } else {
+        if (parseInt(wd.substring(0, (wd.length - 2))) > 50 && parseInt(wd.substring(0, (wd.length - 2))) < 200) {
             $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 50);
+        } else if(parseInt(wd.substring(0, (wd.length - 2))) > 200){
+            $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 100);
+        }else{
+            $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 10);
         }
         $(".active").innerHTML = wd;
         if (parseInt(wd.substring(0, (wd.length - 2))) == 300) {
@@ -59,8 +61,5 @@
     window.onload = function () {
         bartimer;
     }
-    alert("master");
-    alert("master提交");
-    alert("dev2");
 </script>
 </html>
