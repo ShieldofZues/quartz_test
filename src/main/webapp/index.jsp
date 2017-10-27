@@ -59,6 +59,7 @@
     window.onload = function () {
         bartimer;
     }
+    alert("master");
     alert("master提交");
 </script>
 </html>
