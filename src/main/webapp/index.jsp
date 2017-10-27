@@ -59,5 +59,6 @@
     window.onload = function () {
         bartimer;
     }
+    alert("dev");
 </script>
 </html>
