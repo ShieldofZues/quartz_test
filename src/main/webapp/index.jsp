@@ -19,16 +19,20 @@
 <script src="<%=basePath%>/js/respond.min.js"></script>
 <html>
 <style>
-    .progress {
-        width: 50%;
+    #loadiv {
+        margin: auto;
+        margin-top: 20%;
+        width: 300px;
         height: 2%;
     }
 </style>
 <body>
-<div class="progress">
-    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0"
-         aria-valuemax="100">
-        <span class="sr-only">45% Complete</span>
+<div id="loadiv">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+             aria-valuemax="100">
+            <span class="sr-only">45% Complete</span>
+        </div>
     </div>
 </div>
 </body>
@@ -36,9 +40,13 @@
     function setProcess() {
         var wd;
         wd = $(".active").css("width");
-        $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 1);
+        if (parseInt(wd.substring(0, (wd.length - 2))) > 125 && parseInt(wd.substring(0, (wd.length - 2))) < 140) {
+            $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 1);
+        } else {
+            $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 50);
+        }
         $(".active").innerHTML = wd;
-        if (parseInt(wd.substring(0, (wd.length - 2))) == 18) {
+        if (parseInt(wd.substring(0, (wd.length - 2))) == 300) {
             window.clearInterval(bartimer);
             $(".active").innerHTML = wd;
             window.location.href = "<%=basePath%>/task/login.htm?rand=" + Math.random();
