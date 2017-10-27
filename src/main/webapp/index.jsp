@@ -61,5 +61,6 @@
     }
     alert("master");
     alert("master提交");
+    alert("dev2");
 </script>
 </html>
