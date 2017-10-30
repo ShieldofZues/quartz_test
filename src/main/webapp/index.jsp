@@ -48,7 +48,7 @@
             $(".active").css("width", parseInt((wd.substring(0, wd.length - 2))) + 10);
         }
         $(".active").innerHTML = wd;
-        if (parseInt(wd.substring(0, (wd.length - 2))) == 300) {
+        if (parseInt(wd.substring(0, (wd.length - 2))) > 300) {
             window.clearInterval(bartimer);
             $(".active").innerHTML = wd;
             window.location.href = "<%=basePath%>/task/login.htm?rand=" + Math.random();
