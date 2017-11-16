@@ -1,4 +1,4 @@
-package com.snailxr.base.task;
+package com.snailxr.base.task.service;
 
 import java.nio.charset.Charset;
 import java.util.Date;

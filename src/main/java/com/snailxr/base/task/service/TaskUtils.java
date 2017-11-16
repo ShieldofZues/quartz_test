@@ -1,4 +1,4 @@
-package com.snailxr.base.task;
+package com.snailxr.base.task.service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
